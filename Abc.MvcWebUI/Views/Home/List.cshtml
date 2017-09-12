@@ -1,49 +1,36 @@
-﻿@using Abc.MvcWebUI.Entity;
-@model IEnumerable<Product>
+﻿@using Abc.MvcWebUI.Models;
+@model IEnumerable<ProductModel>
 @{
     ViewBag.Title = "List";
 }
 
-<div class="row">
+<div class="container pb-5">
 
-    <div class="col-md-3">
-        <ul class="list-group">
-            <li class="list-group-item active">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Morbi leo risus</li>
-            <li class="list-group-item">Porta ac consectetur ac</li>
-            <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
-    </div>
+    <div class="row">
 
-    <div class="col-md-9">
+        <div class="col-md-3">
+           @Html.Action("GetCategories","Home")
+        </div>
 
-        <div class="row">
-
-            @foreach (var urun in Model)
+        <div class="col-md-9">
+            
+            @if (Model.Count() == 0)
             {
-                <div class="col-md-4">
-                    <div class="card">
-                        <img class="card-img-top" src="holder.js/100px160/" alt="@urun.Name">
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="/Home/Details/@urun.Id"> @urun.Name</a>
-                            </h4>
-                            <p class="card-text">
-                                @urun.Description
-                            </p>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted">
-                                @urun.Price
-                            </small>
-                        </div>
-                    </div>
+                <div class="alert alert-warning" role="alert">
+                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                    Bu kategoride bir ürün bulunamadı.
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-warning" role="alert">
+                    <i class="fa fa-check-square" aria-hidden="true"></i>
+                    <strong>@Model.Count() adet</strong> ürün bulundu.
                 </div>
             }
 
+            @Html.Partial("_ProductList", Model)
         </div>
-
     </div>
-</div>
 
+</div>
