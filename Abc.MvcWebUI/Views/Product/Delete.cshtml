@@ -1,0 +1,34 @@
+﻿@model Abc.MvcWebUI.Entity.Product
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container pb-5">
+    <h2>Bu ürünü silmek istediğinizden emin misiniz?</h2>
+    <hr/>
+    <div>
+       
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Sil" class="btn btn-danger" /> 
+                @Html.ActionLink("Ürün Listesi", "Index",null,new {@class="btn btn-warning"})
+            </div>
+        }
+    </div>
+</div>
