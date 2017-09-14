@@ -10,6 +10,7 @@ using Abc.MvcWebUI.Entity;
 
 namespace Abc.MvcWebUI.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class ProductController : Controller
     {
         private DataContext db = new DataContext();
