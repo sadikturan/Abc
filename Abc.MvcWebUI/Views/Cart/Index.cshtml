@@ -12,8 +12,8 @@
             
             @if(Model.CartLines.Count>0)
             {
-               <table class="table table-bordered">
-                <thead>
+                <table class="table table-bordered">
+                    <thead>
                     <tr>
                         <th></th>
                         <th>Quantity</th>
@@ -22,8 +22,8 @@
                         <th>Sub Total</th>
                         <td></td>
                     </tr>
-                </thead>
-                <tbody>
+                    </thead>
+                    <tbody>
                     @foreach (var item in Model.CartLines)
                     {
                         <tr>
@@ -54,16 +54,26 @@
                             </td>
                         </tr>
                     }
-                </tbody>
-                <tfoot>
+                    </tbody>
+                    <tfoot>
                     <tr>
                         <td colspan="5"></td>
                         <td>
                             @Model.Total().ToString("c")
                         </td>
-                   </tr>
-            </tfoot>
-        </table>
+                    </tr>
+                    </tfoot>
+                </table>
+                <div class="text-center">
+                    <a href="/Home/List" class="btn btn-primary">
+                        <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                        Alışverişe Devam Et
+                    </a>
+                    <a href="/Cart/Checkout" class="btn btn-primary">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                        Alışverişi Tamamla
+                    </a>
+                </div>
             }
             else
             {
