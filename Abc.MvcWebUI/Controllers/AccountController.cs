@@ -128,7 +128,14 @@ namespace Abc.MvcWebUI.Controllers
         public ActionResult Login(Login model, string ReturnUrl)
         {
             if (ModelState.IsValid)
-            {
+            {               
+                ApplicationUser u = null;
+                if (model.UserName.Contains('@'))
+                {
+                    u = _userManager.FindByEmail(model.UserName);
+                    model.UserName = u.UserName;
+                }          
+
                 //Login işlemleri
                 var user = _userManager.Find(model.UserName, model.Password);
 
